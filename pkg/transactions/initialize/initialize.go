@@ -1,4 +1,4 @@
-package payment
+package initialize
 
 import (
 	"bytes"
@@ -7,6 +7,8 @@ import (
 	"io"
 	"log"
 	"net/http"
+
+	"github.com/Daniel-Sogbey/paystack/internal"
 )
 
 type CustomField struct {
@@ -19,16 +21,14 @@ type MetaData struct {
 	CustomFields []CustomField `json:"custom_fields"`
 }
 
-type ResponseData struct {
-	AuthorizationURL string `json:"authorization_url"`
-	AccessCode       string `json:"access_code"`
-	Reference        string `json:"reference"`
-}
-
-type AcceptPaymentResponse struct {
-	Status  bool         `json:"status"`
-	Message string       `json:"message"`
-	Data    ResponseData `json:"data"`
+type InitializeTransactionResponse struct {
+	Status  bool   `json:"status"`
+	Message string `json:"message"`
+	Data    struct {
+		AuthorizationURL string `json:"authorization_url"`
+		AccessCode       string `json:"access_code"`
+		Reference        string `json:"reference"`
+	} `json:"data"`
 }
 
 type Bank struct {
@@ -36,7 +36,7 @@ type Bank struct {
 	AccountNumber string `json:"account_number"`
 }
 
-type AcceptPaymentRequest struct {
+type InitializeTransactionRequest struct {
 	Email  string `json:"email"`
 	Amount string `json:"amount"`
 }
@@ -47,13 +47,7 @@ type Client struct {
 	Client        *http.Client
 }
 
-func setHeaders(request *http.Request, authorization string) {
-	request.Header.Set("authorization", "Bearer "+authorization)
-	request.Header.Set("content-type", "application/json")
-}
-
-func (c *Client) AcceptPayment(request *AcceptPaymentRequest) (AcceptPaymentResponse, error) {
-
+func (c *Client) InitializeTransaction(request *InitializeTransactionRequest) (InitializeTransactionResponse, error) {
 	c.Client = &http.Client{}
 
 	apiUrl := "https://api.paystack.co/transaction/initialize"
@@ -61,11 +55,9 @@ func (c *Client) AcceptPayment(request *AcceptPaymentRequest) (AcceptPaymentResp
 
 	requestJSON, err := json.Marshal(request)
 
-	fmt.Println("REQUEST BODY", string(requestJSON))
-
 	req, _ := http.NewRequest("POST", apiUrl, bytes.NewBuffer([]byte(requestJSON)))
 
-	setHeaders(req, c.Authorization)
+	internal.SetHeaders(req, c.Authorization)
 
 	response, err := c.Client.Do(req)
 
@@ -75,22 +67,20 @@ func (c *Client) AcceptPayment(request *AcceptPaymentRequest) (AcceptPaymentResp
 
 	defer response.Body.Close()
 
-	fmt.Println("RESPONSE STATUS CODE : ", response.StatusCode)
-
 	responseBody, err := io.ReadAll(response.Body)
 	fmt.Println(string(responseBody))
 
-	var acceptedResponse AcceptPaymentResponse
+	var initializeTransactionResponse InitializeTransactionResponse
 
-	err = json.Unmarshal(responseBody, &acceptedResponse)
+	err = json.Unmarshal(responseBody, &initializeTransactionResponse)
 
 	if err != nil {
 		log.Fatalf("Error parsing response to fit format %v", err)
 	}
 
-	return AcceptPaymentResponse{
-		Status:  acceptedResponse.Status,
-		Message: acceptedResponse.Message,
-		Data:    acceptedResponse.Data,
+	return InitializeTransactionResponse{
+		Status:  initializeTransactionResponse.Status,
+		Message: initializeTransactionResponse.Message,
+		Data:    initializeTransactionResponse.Data,
 	}, nil
 }
