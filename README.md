@@ -75,7 +75,7 @@ import (
 func TestInitializeTransactions(t *testing.T) {
 
 	client := &client.Client{
-		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
+		Authorization: os.Getenv("PAYSTACK_API_KEY"),
 		ContentType:   "application/json",
 	}
 
