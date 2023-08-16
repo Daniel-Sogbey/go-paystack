@@ -18,7 +18,7 @@ package main
 import (
 	"fmt"
 	"log"
-
+	"os"
 	"github.com/Daniel-Sogbey/go-paystack/client"
 	"github.com/Daniel-Sogbey/go-paystack/pkg/transactions/initialize"
 	"github.com/Daniel-Sogbey/go-paystack/pkg/transactions/verify"
@@ -28,7 +28,7 @@ func main() {
 
 	//SET UP AN HTTP CLIENT WITH AUTHORIZATION KEY AND CONTENT TYPE
 	client := &client.Client{
-		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
+		Authorization: os.Getenv("PAYSTACK_API_KEY"),
 		ContentType:   "application/json",
 	}
 
