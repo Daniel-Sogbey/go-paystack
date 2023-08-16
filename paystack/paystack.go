@@ -1,4 +1,4 @@
-package client
+package paystack
 
 import "net/http"
 

@@ -19,7 +19,8 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"github.com/Daniel-Sogbey/go-paystack/client"
+
+	"github.com/Daniel-Sogbey/go-paystack/paystack"
 	"github.com/Daniel-Sogbey/go-paystack/pkg/transactions/initialize"
 	"github.com/Daniel-Sogbey/go-paystack/pkg/transactions/verify"
 )
@@ -27,7 +28,7 @@ import (
 func main() {
 
 	//SET UP AN HTTP CLIENT WITH AUTHORIZATION KEY AND CONTENT TYPE
-	client := &client.Client{
+	client := &paystack.Client{
 		Authorization: os.Getenv("PAYSTACK_API_KEY"),
 		ContentType:   "application/json",
 	}
@@ -60,6 +61,7 @@ func main() {
 	fmt.Println("JSON RESPONSE : ", verifyTransactionResponse)
 
 }
+
 ```
 
 ## Run Sample Test
@@ -74,12 +76,13 @@ package initialize
 import (
 	"testing"
 	"os"
-	"github.com/Daniel-Sogbey/go-paystack/client"
+
+	"github.com/Daniel-Sogbey/go-paystack/paystack"
 )
 
 func TestInitializeTransactions(t *testing.T) {
 
-	client := &client.Client{
+	client := &paystack.Client{
 		Authorization: os.Getenv("PAYSTACK_API_KEY"),
 		ContentType:   "application/json",
 	}
@@ -100,6 +103,7 @@ func TestInitializeTransactions(t *testing.T) {
 	}
 
 }
+
 
 ```
 

@@ -7,8 +7,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Daniel-Sogbey/go-paystack/client"
 	"github.com/Daniel-Sogbey/go-paystack/internal"
+	"github.com/Daniel-Sogbey/go-paystack/paystack"
 )
 
 type VerificationRequest struct {
@@ -98,7 +98,7 @@ type VerificationResponse struct {
 	Data    TransactionData `json:"data"`
 }
 
-func VerifyTransaction(c *client.Client, request *VerificationRequest) (VerificationResponse, error) {
+func VerifyTransaction(c *paystack.Client, request *VerificationRequest) (VerificationResponse, error) {
 	c.Client = &http.Client{}
 
 	apiUrl := "https://api.paystack.co/transaction/verify/" + request.Reference

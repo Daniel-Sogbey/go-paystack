@@ -8,8 +8,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Daniel-Sogbey/go-paystack/client"
 	"github.com/Daniel-Sogbey/go-paystack/internal"
+	"github.com/Daniel-Sogbey/go-paystack/paystack"
 )
 
 type CustomField struct {
@@ -42,7 +42,7 @@ type InitializeTransactionRequest struct {
 	Amount string `json:"amount"`
 }
 
-func InitializeTransaction(c *client.Client, request *InitializeTransactionRequest) (InitializeTransactionResponse, error) {
+func InitializeTransaction(c *paystack.Client, request *InitializeTransactionRequest) (InitializeTransactionResponse, error) {
 	c.Client = &http.Client{}
 
 	apiUrl := "https://api.paystack.co/transaction/initialize"

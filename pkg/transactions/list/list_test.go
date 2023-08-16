@@ -3,11 +3,11 @@ package listTransactions
 import (
 	"testing"
 
-	"github.com/Daniel-Sogbey/go-paystack/client"
+	"github.com/Daniel-Sogbey/go-paystack/paystack"
 )
 
 func TestListTransactions(t *testing.T) {
-	client := &client.Client{
+	client := &paystack.Client{
 		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
 		ContentType:   "application/json",
 	}
