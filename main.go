@@ -2,19 +2,16 @@ package main
 
 import (
 	"fmt"
-
-	// "github.com/Daniel-Sogbey/paystack/pkg/transactions/initialize"
-	"github.com/Daniel-Sogbey/paystack/pkg/transactions/verify"
 )
 
 func main() {
 	fmt.Println("Hello, World")
 
 	//SET UP CLIENT
-	client := &verify.Client{
-		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
-		ContentType:   "application/json",
-	}
+	// client := &verify.Client{
+	// 	Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
+	// 	ContentType:   "application/json",
+	// }
 
 	// client2 := &verify.Client{
 	// 	Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",

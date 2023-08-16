@@ -23,7 +23,7 @@ func TestInitializeTransactions(t *testing.T) {
 	}
 
 	if response.Status == false {
-		t.Errorf("Expected response of status %v, but got a status of %v and an error message that says %v", response.Status, response.Status, response.Message)
+		t.Errorf("Expected response of status true, but got a status of %v and an error message that says %v", response.Status, response.Message)
 	}
 
 }
