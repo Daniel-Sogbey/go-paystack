@@ -4,7 +4,7 @@
 > A well tested and maintained Go sdk for using the paystack api
 
 ### Install
-> `go get github.com/Daniel-Sogbey/go-paystack`
+> ```GO go get github.com/Daniel-Sogbey/go-paystack```
 
 ### Quick Guide
 
@@ -61,14 +61,14 @@ func main() {
 
 ## Run Sample Test
 
-> ```$ go test```
+> ```GO $ go test```
 
 ```GO
 package initialize
 
 import (
 	"testing"
-
+	"os"
 	"github.com/Daniel-Sogbey/go-paystack/client"
 )
 
