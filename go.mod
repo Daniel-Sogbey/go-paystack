@@ -1,3 +1,3 @@
-module github.com/Daniel-Sogbey/go-paystack
+module github.com/Daniel-Sogbey/paystack-go-sdk
 
 go 1.21.0

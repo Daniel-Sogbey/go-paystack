@@ -3,7 +3,7 @@ package Transactions
 import (
 	"testing"
 
-	"github.com/Daniel-Sogbey/go-paystack/paystack"
+	"github.com/Daniel-Sogbey/paystack-go-sdk/paystack"
 )
 
 func TestInitialize(t *testing.T) {
