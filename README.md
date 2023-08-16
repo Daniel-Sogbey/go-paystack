@@ -61,7 +61,7 @@ func main() {
 
 ## Run Sample Test
 
-> ``` $ go test```
+``` $ go test```
 
 ```GO
 package initialize
