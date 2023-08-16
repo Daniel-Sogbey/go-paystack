@@ -7,7 +7,8 @@
 
 ### Quick Guide
 
-> `package main
+```Go
+package main
 
 import (
 	"fmt"
@@ -54,4 +55,4 @@ func main() {
 	fmt.Println("JSON RESPONSE : ", verifyTransactionResponse)
 
 }
-`
+```
