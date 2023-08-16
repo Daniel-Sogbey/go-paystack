@@ -1,10 +1,14 @@
 package verify
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/Daniel-Sogbey/go-paystack/client"
+)
 
 func TestVerifyTransaction(t *testing.T) {
 
-	client := Client{
+	client := &client.Client{
 		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
 		ContentType:   "application/json",
 	}
@@ -13,7 +17,7 @@ func TestVerifyTransaction(t *testing.T) {
 		Reference: "c2z7k6t1i4",
 	}
 
-	response, err := client.VerifyTransaction(&sampleVerificationRequest)
+	response, err := VerifyTransaction(client, &sampleVerificationRequest)
 
 	if err != nil {
 		t.Errorf("Test failed with error %v", err)

@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/Daniel-Sogbey/go-paystack/client"
 	"github.com/Daniel-Sogbey/go-paystack/internal"
 )
 
@@ -41,13 +42,7 @@ type InitializeTransactionRequest struct {
 	Amount string `json:"amount"`
 }
 
-type Client struct {
-	Authorization string
-	ContentType   string
-	Client        *http.Client
-}
-
-func (c *Client) InitializeTransaction(request *InitializeTransactionRequest) (InitializeTransactionResponse, error) {
+func InitializeTransaction(c *client.Client, request *InitializeTransactionRequest) (InitializeTransactionResponse, error) {
 	c.Client = &http.Client{}
 
 	apiUrl := "https://api.paystack.co/transaction/initialize"
