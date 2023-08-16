@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/Daniel-Sogbey/go-paystack/paystack"
-	Transactions "github.com/Daniel-Sogbey/go-paystack/pkg/transactions"
+	"github.com/Daniel-Sogbey/paystack-go-sdk/paystack"
+	Transactions "github.com/Daniel-Sogbey/paystack-go-sdk/pkg/transactions"
 )
 
 func main() {
