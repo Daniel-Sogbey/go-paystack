@@ -8,7 +8,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Daniel-Sogbey/paystack/internal"
+	"github.com/Daniel-Sogbey/go-paystack/internal"
 )
 
 type CustomField struct {
