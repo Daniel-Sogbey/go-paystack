@@ -1,4 +1,4 @@
-package initialize
+package Transactions
 
 import (
 	"bytes"
@@ -42,7 +42,7 @@ type InitializeTransactionRequest struct {
 	Amount string `json:"amount"`
 }
 
-func InitializeTransaction(c *paystack.Client, request *InitializeTransactionRequest) (InitializeTransactionResponse, error) {
+func Initialize(c *paystack.Client, request *InitializeTransactionRequest) (InitializeTransactionResponse, error) {
 	c.Client = &http.Client{}
 
 	apiUrl := "https://api.paystack.co/transaction/initialize"

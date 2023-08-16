@@ -1,4 +1,4 @@
-package listTransactions
+package Transactions
 
 import (
 	"testing"
@@ -6,24 +6,24 @@ import (
 	"github.com/Daniel-Sogbey/go-paystack/paystack"
 )
 
-func TestListTransactions(t *testing.T) {
+func TestVerify(t *testing.T) {
+
 	client := &paystack.Client{
 		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
 		ContentType:   "application/json",
 	}
 
-	listTransactionRequest := &ListTransactionRequest{
-		Id: "3030558719",
+	sampleVerificationRequest := &VerificationRequest{
+		Reference: "c2z7k6t1i4",
 	}
 
-	response, err := ListTransactions(client, listTransactionRequest)
+	response, err := Verify(client, sampleVerificationRequest)
 
 	if err != nil {
-		t.Errorf("Test failed , go an error that says : %v", err)
+		t.Errorf("Test failed with error %v", err)
 	}
 
 	if response.Status == false {
 		t.Errorf("Expected response of status true, but got a status of %v and an error message that says %v", response.Status, response.Message)
 	}
-
 }

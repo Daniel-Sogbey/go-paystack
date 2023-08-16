@@ -5,8 +5,7 @@ import (
 	"log"
 
 	"github.com/Daniel-Sogbey/go-paystack/paystack"
-	"github.com/Daniel-Sogbey/go-paystack/pkg/transactions/initialize"
-	"github.com/Daniel-Sogbey/go-paystack/pkg/transactions/verify"
+	Transactions "github.com/Daniel-Sogbey/go-paystack/pkg/transactions"
 )
 
 func main() {
@@ -18,13 +17,13 @@ func main() {
 	}
 
 	//SET UP INITIALIZE TRANSACTION REQUEST BODY
-	initializeTransactionRequest := &initialize.InitializeTransactionRequest{
+	initializeTransactionRequest := &Transactions.InitializeTransactionRequest{
 		Email:  "mathematics06physics@gmail.com",
 		Amount: "2000",
 	}
 
 	// EXAMPLE OF AN INITIALIZE TRANSACTION REQUEST
-	initializeTransactionResponse, err := initialize.InitializeTransaction(client, initializeTransactionRequest)
+	initializeTransactionResponse, err := Transactions.Initialize(client, initializeTransactionRequest)
 
 	if err != nil {
 		log.Fatalf("Error making an initialize request to the package api %v", err)
@@ -34,12 +33,12 @@ func main() {
 	fmt.Println("JSON RESPONSE : ", initializeTransactionResponse)
 
 	// SET UP VERIFICATION TRANSACTION REQUEST
-	verifyTransactionRequest := &verify.VerificationRequest{
+	verifyTransactionRequest := &Transactions.VerificationRequest{
 		Reference: "",
 	}
 
 	// EXAMPLE OF A VERIFY TRANSACTION REQUEST
-	verifyTransactionResponse, _ := verify.VerifyTransaction(client, verifyTransactionRequest)
+	verifyTransactionResponse, _ := Transactions.Verify(client, verifyTransactionRequest)
 
 	// SAMPLE JSON RESPONSE FROM THE PAYSTACK INITIALIZE TRANSACTION API
 	fmt.Println("JSON RESPONSE : ", verifyTransactionResponse)

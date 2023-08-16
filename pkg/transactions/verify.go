@@ -1,4 +1,4 @@
-package verify
+package Transactions
 
 import (
 	"encoding/json"
@@ -98,7 +98,7 @@ type VerificationResponse struct {
 	Data    TransactionData `json:"data"`
 }
 
-func VerifyTransaction(c *paystack.Client, request *VerificationRequest) (VerificationResponse, error) {
+func Verify(c *paystack.Client, request *VerificationRequest) (VerificationResponse, error) {
 	c.Client = &http.Client{}
 
 	apiUrl := "https://api.paystack.co/transaction/verify/" + request.Reference
