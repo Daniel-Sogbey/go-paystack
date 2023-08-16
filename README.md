@@ -4,7 +4,7 @@
 > A well tested and maintained Go sdk for the paystack api
 
 ### Install
-> ```go get github.com/Daniel-Sogbey/go-paystack```
+```go get github.com/Daniel-Sogbey/go-paystack```
 
 ### Quick Guide
 
