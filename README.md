@@ -66,7 +66,6 @@ func main() {
 
 ```Go
 go test
-	
 ```
 
 ```GO
