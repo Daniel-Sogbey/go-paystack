@@ -109,7 +109,7 @@ func TestInitializeTransactions(t *testing.T) {
 ### Transactions
 - [x] Initialize Transaction
 - [x] Verify Transaction
-- [ ] List Transactions
+- [x] List Transactions
 - [ ] Fetch Transaction
 - [ ] Charge Authorization
 - [ ] View Transaction Timeline
