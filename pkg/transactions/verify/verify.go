@@ -2,6 +2,7 @@ package verify
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -114,6 +115,7 @@ func VerifyTransaction(c *client.Client, request *VerificationRequest) (Verifica
 	defer response.Body.Close()
 
 	responseBody, err := io.ReadAll(response.Body)
+	fmt.Println(string(responseBody))
 
 	if err != nil {
 		log.Fatalf("Error reading verification response body into a slice of bytes %v", err)

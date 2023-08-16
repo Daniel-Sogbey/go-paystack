@@ -13,11 +13,11 @@ func TestVerifyTransaction(t *testing.T) {
 		ContentType:   "application/json",
 	}
 
-	sampleVerificationRequest := VerificationRequest{
+	sampleVerificationRequest := &VerificationRequest{
 		Reference: "c2z7k6t1i4",
 	}
 
-	response, err := VerifyTransaction(client, &sampleVerificationRequest)
+	response, err := VerifyTransaction(client, sampleVerificationRequest)
 
 	if err != nil {
 		t.Errorf("Test failed with error %v", err)
