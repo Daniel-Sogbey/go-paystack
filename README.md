@@ -1,9 +1,11 @@
 # Paystack Go SDK 🥤
 
 ## Robust Go SDK for the Paystack API
+
 > A well tested and maintained Go sdk for the paystack api
 
 ### Install
+
 ```Go
 go get github.com/Daniel-Sogbey/go-paystack
 
@@ -11,7 +13,8 @@ go get github.com/Daniel-Sogbey/go-paystack
 
 ### Quick Guide
 
-> 
+>
+
 ```Go
 package main
 
@@ -28,10 +31,7 @@ import (
 func main() {
 
 	//SET UP AN HTTP CLIENT WITH AUTHORIZATION KEY AND CONTENT TYPE
-	client := &paystack.Client{
-		Authorization: os.Getenv("PAYSTACK_API_KEY"),
-		ContentType:   "application/json",
-	}
+	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
 
 	//SET UP INITIALIZE TRANSACTION REQUEST BODY
 	initializeTransactionRequest := &Transactions.InitializeTransactionRequest{
@@ -83,12 +83,8 @@ import (
 
 func TestInitializeTransactions(t *testing.T) {
 
-	client := &paystack.Client{
-		Authorization: os.Getenv("PAYSTACK_API_KEY"),
-		ContentType:   "application/json",
-	}
+	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
 
-	
 	sampleInitializeTransactionRequest := &InitializeTransactionRequest{
 		Email:  "1@2.com",
 		Amount: "20",
@@ -109,10 +105,10 @@ func TestInitializeTransactions(t *testing.T) {
 
 ```
 
-
 ## TODOS
 
 ### Transactions
+
 - [x] Initialize Transaction
 - [x] Verify Transaction
 - [x] List Transactions
@@ -124,6 +120,7 @@ func TestInitializeTransactions(t *testing.T) {
 - [ ] Partial Debit
 
 ### Transaction Splits
+
 - [ ] Create Split
 - [ ] List/Search Splits
 - [ ] Fetch Split
@@ -133,11 +130,10 @@ func TestInitializeTransactions(t *testing.T) {
 - [ ] Remove Subaccount from Split
 
 ### Refunds
+
 - [ ] Create Refund
 - [ ] List Refunds
 - [ ] Fetch Refunds
-
-
 
 ## CONTRIBUTIONS
 

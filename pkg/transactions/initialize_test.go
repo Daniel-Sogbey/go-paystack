@@ -8,10 +8,7 @@ import (
 
 func TestInitialize(t *testing.T) {
 
-	client := &paystack.Client{
-		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
-		ContentType:   "application/json",
-	}
+	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
 
 	sampleInitializeTransactionRequest := &InitializeTransactionRequest{
 		Email:  "1@2.com",

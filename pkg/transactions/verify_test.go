@@ -8,10 +8,7 @@ import (
 
 func TestVerify(t *testing.T) {
 
-	client := &paystack.Client{
-		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
-		ContentType:   "application/json",
-	}
+	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
 
 	sampleVerificationRequest := &VerificationRequest{
 		Reference: "c2z7k6t1i4",

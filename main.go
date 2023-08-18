@@ -10,11 +10,7 @@ import (
 
 func main() {
 
-	//SET UP AN HTTP CLIENT WITH AUTHORIZATION KEY AND CONTENT TYPE
-	client := &paystack.Client{
-		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
-		ContentType:   "application/json",
-	}
+	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
 
 	//SET UP INITIALIZE TRANSACTION REQUEST BODY
 	initializeTransactionRequest := &Transactions.InitializeTransactionRequest{
