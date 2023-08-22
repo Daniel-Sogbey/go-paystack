@@ -2,13 +2,18 @@ package Transactions
 
 import (
 	"fmt"
+	"os"
 	"testing"
 
+	"github.com/Daniel-Sogbey/paystack-go-sdk/internal"
 	"github.com/Daniel-Sogbey/paystack-go-sdk/paystack"
 )
 
 func TestFetch(t *testing.T) {
-	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
+
+	internal.LoadEnv()
+
+	client := paystack.NewClient(os.Getenv("API_KEY"), "application/json")
 
 	fetchTransactionsResquest := FetchTransactionsResquest{
 		Id: "3030558719",

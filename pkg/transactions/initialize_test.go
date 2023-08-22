@@ -1,14 +1,17 @@
 package Transactions
 
 import (
+	"os"
 	"testing"
 
+	"github.com/Daniel-Sogbey/paystack-go-sdk/internal"
 	"github.com/Daniel-Sogbey/paystack-go-sdk/paystack"
 )
 
 func TestInitialize(t *testing.T) {
+	internal.LoadEnv()
 
-	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
+	client := paystack.NewClient(os.Getenv("API_KEY"), "application/json")
 
 	sampleInitializeTransactionRequest := &InitializeTransactionRequest{
 		Email:  "1@2.com",
