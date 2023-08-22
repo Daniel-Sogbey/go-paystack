@@ -46,11 +46,11 @@ func Initialize(c *paystack.Client, request *InitializeTransactionRequest) (Init
 	c.Client = &http.Client{}
 
 	apiUrl := "https://api.paystack.co/transaction/initialize"
-	request.Email = "1@2.com"
+	// request.Email = "1@2.com"
 
 	requestJSON, err := json.Marshal(request)
 
-	req, _ := http.NewRequest("POST", apiUrl, bytes.NewBuffer([]byte(requestJSON)))
+	req, _ := http.NewRequest("POST", apiUrl, bytes.NewBuffer(requestJSON))
 
 	internal.SetHeaders(req, c.Authorization)
 

@@ -7,10 +7,7 @@ import (
 )
 
 func TestListTransactions(t *testing.T) {
-	client := &paystack.Client{
-		Authorization: "sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb",
-		ContentType:   "application/json",
-	}
+	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
 
 	listTransactionRequest := &ListTransactionRequest{
 		Id: "3030558719",
