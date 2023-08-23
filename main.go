@@ -39,4 +39,11 @@ func main() {
 	// SAMPLE JSON RESPONSE FROM THE PAYSTACK INITIALIZE TRANSACTION API
 	fmt.Println("JSON RESPONSE : ", verifyTransactionResponse)
 
+	fetchTransactionRequest := Transactions.FetchTransactionsResquest{
+		Id: "3030558719",
+	}
+
+	fetchTransactionResponse, _ := Transactions.Fetch(client, &fetchTransactionRequest)
+
+	fmt.Println("JSON RESPONSE : ", fetchTransactionResponse)
 }
