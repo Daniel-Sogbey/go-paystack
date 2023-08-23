@@ -11,9 +11,9 @@ import (
 )
 
 type ChargeAuthorizationRequest struct {
-	Email             string  `json:"email"`
-	Amount            float64 `json:"amount"`
-	AuthorizationCode string  `json:"authorization_code"`
+	Email             string `json:"email"`
+	Amount            string `json:"amount"`
+	AuthorizationCode string `json:"authorization_code"`
 }
 
 type Data struct {

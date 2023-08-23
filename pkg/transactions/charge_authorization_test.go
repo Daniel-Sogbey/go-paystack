@@ -8,11 +8,12 @@ import (
 )
 
 func TestChargeAuthorization(t *testing.T) {
+
 	client := paystack.NewClient(os.Getenv("API_KEY"), "application/json")
 
 	chargeAuthorizationRequest := &ChargeAuthorizationRequest{
 		Email:             "1@2.com",
-		Amount:            12,
+		Amount:            "20000",
 		AuthorizationCode: "AUTH_6rxb5740gf",
 	}
 
