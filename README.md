@@ -23,15 +23,15 @@ import (
 	"log"
 	"os"
 
-
-	"github.com/Daniel-Sogbey/go-paystack/paystack"
-	Transactions "github.com/Daniel-Sogbey/go-paystack/pkg/transactions"
+	"github.com/Daniel-Sogbey/paystack-go-sdk/internal"
+	"github.com/Daniel-Sogbey/paystack-go-sdk/paystack"
+	Transactions "github.com/Daniel-Sogbey/paystack-go-sdk/pkg/transactions"
 )
 
 func main() {
+	internal.LoadEnv()
 
-	//SET UP AN HTTP CLIENT WITH AUTHORIZATION KEY AND CONTENT TYPE
-	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
+	client := paystack.NewClient(os.Getenv("API_KEY"), "application/json")
 
 	//SET UP INITIALIZE TRANSACTION REQUEST BODY
 	initializeTransactionRequest := &Transactions.InitializeTransactionRequest{
@@ -60,8 +60,15 @@ func main() {
 	// SAMPLE JSON RESPONSE FROM THE PAYSTACK INITIALIZE TRANSACTION API
 	fmt.Println("JSON RESPONSE : ", verifyTransactionResponse)
 
+	fetchTransactionRequest := Transactions.FetchTransactionsResquest{
+		Id: "3030558719",
+	}
 
+	fetchTransactionResponse, _ := Transactions.Fetch(client, &fetchTransactionRequest)
+
+	fmt.Println("JSON RESPONSE : ", fetchTransactionResponse)
 }
+
 
 ```
 
@@ -72,18 +79,20 @@ go test
 ```
 
 ```GO
-package initialize
+package Transactions
 
 import (
-	"testing"
 	"os"
+	"testing"
 
-	"github.com/Daniel-Sogbey/go-paystack/paystack"
+	"github.com/Daniel-Sogbey/paystack-go-sdk/internal"
+	"github.com/Daniel-Sogbey/paystack-go-sdk/paystack"
 )
 
-func TestInitializeTransactions(t *testing.T) {
+func TestInitialize(t *testing.T) {
+	internal.LoadEnv()
 
-	client := paystack.NewClient("sk_test_f572197fbc13951b13afafc0d0f6517ed7ec12eb", "application/json")
+	client := paystack.NewClient(os.Getenv("API_KEY"), "application/json")
 
 	sampleInitializeTransactionRequest := &InitializeTransactionRequest{
 		Email:  "1@2.com",
@@ -101,6 +110,7 @@ func TestInitializeTransactions(t *testing.T) {
 	}
 
 }
+
 
 
 ```
